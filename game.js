@@ -199,6 +199,37 @@ class Game {
         window.addEventListener('keyup', e => {
             this.keys[e.key] = false;
         });
+
+        // On-screen controls
+        const leftBtn = document.getElementById('left-btn');
+        const rightBtn = document.getElementById('right-btn');
+        const fireBtn = document.getElementById('fire-btn');
+
+        const handlePress = (e, key, isPressed) => {
+            e.preventDefault();
+            this.keys[key] = isPressed;
+        };
+
+        // Left Button
+        leftBtn.addEventListener('mousedown', e => handlePress(e, 'ArrowLeft', true));
+        leftBtn.addEventListener('mouseup', e => handlePress(e, 'ArrowLeft', false));
+        leftBtn.addEventListener('mouseleave', e => handlePress(e, 'ArrowLeft', false));
+        leftBtn.addEventListener('touchstart', e => handlePress(e, 'ArrowLeft', true), { passive: true });
+        leftBtn.addEventListener('touchend', e => handlePress(e, 'ArrowLeft', false));
+
+        // Right Button
+        rightBtn.addEventListener('mousedown', e => handlePress(e, 'ArrowRight', true));
+        rightBtn.addEventListener('mouseup', e => handlePress(e, 'ArrowRight', false));
+        rightBtn.addEventListener('mouseleave', e => handlePress(e, 'ArrowRight', false));
+        rightBtn.addEventListener('touchstart', e => handlePress(e, 'ArrowRight', true), { passive: true });
+        rightBtn.addEventListener('touchend', e => handlePress(e, 'ArrowRight', false));
+
+        // Fire Button
+        fireBtn.addEventListener('mousedown', e => handlePress(e, ' ', true));
+        fireBtn.addEventListener('mouseup', e => handlePress(e, ' ', false));
+        fireBtn.addEventListener('mouseleave', e => handlePress(e, ' ', false));
+        fireBtn.addEventListener('touchstart', e => handlePress(e, ' ', true), { passive: true });
+        fireBtn.addEventListener('touchend', e => handlePress(e, ' ', false));
     }
 
     restart() {
